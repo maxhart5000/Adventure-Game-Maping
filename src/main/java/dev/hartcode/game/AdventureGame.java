@@ -25,7 +25,7 @@ public class AdventureGame {
     }
     private record Location(String description, HashMap<Compass, String> nextPlaces ){}
     private String lastPlace;
-    private HashMap<String, Location> adventureMap = new HashMap<>();
+    private final HashMap<String, Location> adventureMap = new HashMap<>();
 
     public AdventureGame(){
         this(null);
@@ -68,7 +68,7 @@ public class AdventureGame {
     }
     public void move(String direction){
         var nextPlaces = adventureMap.get(lastPlace).nextPlaces;
-        String nextPlace = null;
+        String nextPlace;
         if("NESW".contains(direction)){
             nextPlace = nextPlaces.get(Compass.valueOf(direction));
             if(nextPlace!=null){
